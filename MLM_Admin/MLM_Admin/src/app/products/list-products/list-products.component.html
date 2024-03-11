@@ -1,1 +1,39 @@
-<p>list-products works!</p>
+<h2>Liste des produits :</h2>
+<br/>
+<button class="btn btn-success" routerLink="/products/add">Ajouter un produit</button>
+<br/>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>N° du Produit</th>
+            <th>Nom du Produit</th>
+            <th>Quantité</th>
+            <th>Prix unitaire</th>
+            <th>Category</th>
+            <th>Image</th>
+            <th>Couleur</th>
+            <th>Taille</th>
+            <th>Description</th>
+            <th>Editer</th>
+            <th>Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of productsToDisplay">
+            <td>{{p.id}}</td>
+            <td>{{p.productNumber}}</td>
+            <td>{{p.productName}}</td>
+            <td>{{p.quantityInStock}}</td>
+            <td>{{p.unitPrice}}</td>
+            <td>{{p.category}}</td>
+            <td>{{p.image}}</td>
+            <td>{{p.color}}</td>
+            <td>{{p.size}}</td>
+            <td>{{p.description}}</td>
+            <td><button class="btn btn-primary" [routerLink]="['/products', 'edit', p.id]">Editer</button></td>
+            <td><button class="btn btn-danger" (click)="deleteProduct(p.id)">Supprimer</button></td>
+        </tr>
+    </tbody>
+</table>
+

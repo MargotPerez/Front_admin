@@ -1,1 +1,64 @@
-<p>edit-product works!</p>
+<h2>Editer un produit</h2>
+<form (ngSubmit)="editProduct(f)" #f="ngForm">
+    <div class="mb-3">
+        <label for="productNumber" class="form-label">N° du produit *</label>
+        <input type="text" class="form-control" id="productNumber" name="productNumber" ngModel required #name="ngModel" [(ngModel)]="product==undefined?'':product.productNumber" >
+        <span class="erreur" *ngIf="name.invalid && name.touched">Le champ nom est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="productName" class="form-label">Nom du produit *</label>
+        <input type="text" class="form-control" id="productName" name="productName" ngModel required #name="ngModel" [(ngModel)]="product==undefined?'':product.productName" >
+        <span class="erreur" *ngIf="name.invalid && name.touched">Le champ nom est obligatoire</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="quantityInStock" class="form-label">Quantité en stock *</label>
+        <input type="number" class="form-control" id="quantityInStock" name="quantityInStock" ngModel required #name="ngModel" [(ngModel)]="product==undefined?'':product.quantityInStock" >
+        <span class="erreur" *ngIf="name.invalid && name.touched">Le champ nom est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="unitPrice" class="form-label">Prix Unitaire *</label>
+        <input type="number" class="form-control" id="unitPrice" name="unitPrice" ngModel required #name="ngModel" [(ngModel)]="product==undefined?'':product.unitPrice" >
+        <span class="erreur" *ngIf="name.invalid && name.touched">Le champ nom est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="categoryId" class="form-label">Catégorie *</label>
+        <select id="categoryId" name="categoryId" ngModel required #category="ngModel" class="form-control" [(ngModel)]="product!.categoryId">
+            <option value="">--Veuillez sélectionner une catégorie--</option>
+            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+        </select>
+        <span class="erreur" *ngIf="name.invalid && name.touched">Le champ catégorie est obligatoire</span>
+    </div>
+    
+
+    <div class="mb-3">
+        <label for="image" class="form-label">Image *</label>
+        <input type="text" class="form-control" id="image" name="image" ngModel required #name="ngModel" [(ngModel)]="product==undefined?'':product.image" >
+        <span class="erreur" *ngIf="name.invalid && name.touched">Le champ nom est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="color" class="form-label">Couleur *</label>
+        <input type="text" class="form-control" id="color" name="color" ngModel required #name="ngModel" [(ngModel)]="product==undefined?'':product.color" >
+        <span class="erreur" *ngIf="name.invalid && name.touched">Le champ nom est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="size" class="form-label">Taille *</label>
+        <input type="text" class="form-control" id="size" name="size" ngModel required #name="ngModel" [(ngModel)]="product==undefined?'':product.size" >
+        <span class="erreur" *ngIf="name.invalid && name.touched">Le champ nom est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="description" class="form-label">Description *</label>
+        <input type="text" class="form-control" id="description" name="description" ngModel required #name="ngModel" [(ngModel)]="product==undefined?'':product.description" >
+        <span class="erreur" *ngIf="name.invalid && name.touched">Le champ nom est obligatoire</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Valider</button>
+ 
+</form>
+

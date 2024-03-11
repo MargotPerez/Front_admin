@@ -1,1 +1,56 @@
-<p>edit-user works!</p>
+<h2>Editer un utilisateur</h2>
+<form (ngSubmit)="editUser(f)" #f="ngForm">
+
+    <div class="mb-3">
+        <label for="firstName" class="form-label">Prénom *</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" ngModel required #firstName="ngModel" [(ngModel)]="user==undefined?'':user.firstName" >
+        <span class="erreur" *ngIf="firstName.invalid && firstName.touched">Le champ Prénom est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="lastName" class="form-label">Nom *</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" ngModel required #lastName="ngModel" [(ngModel)]="user==undefined?'':user.lastName" >
+        <span class="erreur" *ngIf="lastName.invalid && lastName.touched">Le champ Nom est obligatoire</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="mail" class="form-label">Email *</label>
+        <input type="text" class="form-control" id="mail" name="mail" ngModel required #mail="ngModel" [(ngModel)]="user==undefined?'':user.mail" >
+        <span class="erreur" *ngIf="mail.invalid && mail.touched">Le champ Email est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="password" class="form-label">Mot de passe *</label>
+        <input type="text" class="form-control" id="password" name="password" ngModel required #password="ngModel" [(ngModel)]="user==undefined?'':user.password" >
+        <span class="erreur" *ngIf="password.invalid && password.touched">Le champ Mot de passe est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="dateOfBirth" class="form-label">Date de naissance *</label>
+        <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required #dateOfBirth="ngModel" [ngModel]="user==undefined?'':user.dateOfBirth | date : 'yyyy-MM-dd'">
+        <span class="erreur" *ngIf="dateOfBirth.invalid && dateOfBirth.touched">Le champ Date de naissance est obligatoire</span>
+    </div>
+    
+  
+    <div class="mb-3">
+        <label for="phoneNumber" class="form-label">Téléphone *</label>
+        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" ngModel required #phoneNumber="ngModel" [(ngModel)]="user==undefined?'':user.phoneNumber" >
+        <span class="erreur" *ngIf="phoneNumber.invalid && phoneNumber.touched">Le champ Téléphone est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="invoiceAddress" class="form-label">Adresse de facturation *</label>
+        <input type="text" class="form-control" id="invoiceAddress" name="invoiceAddress" ngModel required #invoiceAddress="ngModel" [(ngModel)]="user==undefined?'':user.invoiceAdress" >
+        <span class="erreur" *ngIf="invoiceAddress.invalid && invoiceAddress.touched">Le champ Adresse de facturation est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="deliveryAddress" class="form-label">Adresse de livraison *</label>
+        <input type="text" class="form-control" id="deliveryAddress" name="deliveryAddress" ngModel required #deliveryAddress="ngModel" [(ngModel)]="user==undefined?'':user.deliveryAddress" >
+        <span class="erreur" *ngIf="deliveryAddress.invalid && deliveryAddress.touched">Le champ Adresse de livraison est obligatoire</span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Valider</button>
+ 
+</form>
+

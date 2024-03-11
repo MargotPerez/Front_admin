@@ -1,1 +1,35 @@
-<p>list-users works!</p>
+<h2>Liste des utilisateurs :</h2>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>EMail</th>
+            <th>Mot de passe</th>
+            <th>Date de naissance</th>
+            <th>Téléphone</th>
+            <th>Adresse de facturation</th>
+            <th>Adresse de livraison</th>
+            <th>Editer</th>
+            <th>Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of users">
+            <td>{{u.id}}</td>
+            <td>{{u.firstName}}</td>
+            <td>{{u.lastName}}</td>
+            <td>{{u.mail}}</td>
+            <td>{{u.password}}</td>
+            <td>{{u.dateOfBirth}}</td>
+            <td>{{u.phoneNumber}}</td>
+            <td>{{u.invoiceAdress}}</td>
+            <td>{{u.deliveryAddress}}</td>
+            <td><button class="btn btn-primary" [routerLink]="['/users', 'edit', u.id]">Editer</button></td>
+            <td><button class="btn btn-danger" (click)="deleteUser(u.id)">Supprimer</button></td>
+        </tr>
+    </tbody>
+</table>

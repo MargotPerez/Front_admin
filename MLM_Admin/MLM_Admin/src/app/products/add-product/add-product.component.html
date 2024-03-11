@@ -1,1 +1,62 @@
-<p>add-product works!</p>
+<h2>Ajouter un nouveau produit</h2>
+<form (ngSubmit)="addProduct(f)" #f="ngForm">
+    <div class="mb-3">
+        <label for="productNumber" class="form-label">N° du produit *</label>
+        <input type="text" class="form-control" id="productNumber" name="productNumber" ngModel required #productNumber="ngModel" >
+        <span class="erreur" *ngIf="productNumber.invalid && productNumber.touched">Le champ N° de produit est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="productName" class="form-label">Nom du produit *</label>
+        <input type="text" class="form-control" id="productName" name="productName" ngModel required #productName="ngModel" >
+        <span class="erreur" *ngIf="productName.invalid && productName.touched">Le champ Nom du produit est obligatoire</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="quantityInStock" class="form-label">Quantité en stock *</label>
+        <input type="number" class="form-control" id="quantityInStock" name="quantityInStock" ngModel required #quantityInStock="ngModel" >
+        <span class="erreur" *ngIf="quantityInStock.invalid && quantityInStock.touched">Le champ Quantité en stock est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="unitPrice" class="form-label">Prix Unitaire *</label>
+        <input type="number" class="form-control" id="unitPrice" name="unitPrice" ngModel required #unitPrice="ngModel" >
+        <span class="erreur" *ngIf="unitPrice.invalid && unitPrice.touched">Le champ Prix Unitaire est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="categoryId" class="form-label">Catégorie *</label>
+        <select id="categoryId" name="categoryId" ngModel required #category="ngModel" class="form-control" >
+            <option value="">--Veuillez sélectionner une catégorie--</option>
+            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+        </select>
+        <span class="erreur" *ngIf="category.invalid && category.touched">Le champ Catégorie est obligatoire</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="image" class="form-label">Image *</label>
+        <input type="text" class="form-control" id="image" name="image" ngModel required #image="ngModel">
+        <span class="erreur" *ngIf="image.invalid && image.touched">Le champ Image est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="color" class="form-label">Couleur *</label>
+        <input type="text" class="form-control" id="color" name="color" ngModel required #color="ngModel">
+        <span class="erreur" *ngIf="color.invalid && color.touched">Le champ Couleur est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="size" class="form-label">Taille *</label>
+        <input type="text" class="form-control" id="size" name="size" ngModel required #size="ngModel"  >
+        <span class="erreur" *ngIf="size.invalid && size.touched">Le champ Taille est obligatoire</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="description" class="form-label">Description *</label>
+        <input type="text" class="form-control" id="description" name="description" ngModel required #description="ngModel" >
+        <span class="erreur" *ngIf="description.invalid && description.touched">Le champ Description est obligatoire</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Valider</button>
+ 
+</form>

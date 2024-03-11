@@ -1,1 +1,11 @@
-<p>edit-category works!</p>
+<h2>Editer Une catégorie</h2>
+<form (ngSubmit)="editCategory(f)" #f="ngForm">
+    <div class="mb-3">
+        <label for="name" class="form-label">Nom de la catégorie *</label>
+        <input type="text" class="form-control" id="name" name="name" ngModel required #name="ngModel" [(ngModel)]="category==undefined?'':category.name" >
+        <span class="erreur" *ngIf="name.invalid && name.touched">Le champ nom est obligatoire</span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Valider</button>
+    <div>* : Champ obligatoire</div>
+</form>
