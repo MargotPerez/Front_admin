@@ -1,0 +1,25 @@
+<h2>Détail de la commande :</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+
+            <th>Id</th>
+            <th>Produit</th>
+            <th>Quantité</th>
+            <th>Prix</th>
+            <!-- <th>Editer</th> -->
+         <!--   <th>Supprimer</th> -->
+          
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let oi of order!.orderItems">
+            <td>{{oi.id}}</td>
+            <td>{{oi.productId}}</td>
+            <td>{{oi.quantity}}</td>
+            <td>{{oi.price}}</td>
+            
+        </tr>
+    </tbody>
+</table>

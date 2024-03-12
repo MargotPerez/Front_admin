@@ -1,4 +1,13 @@
+import { OrderItem } from "src/app/orders/model/order-item";
+
 export class Order {
+    public get orderItems(): OrderItem[] {
+        return this._orderItems;
+    }
+    public set orderItems(value: OrderItem[]) {
+        this._orderItems = value;
+    }
+    
     public get id(): number {
         return this._id;
     }
@@ -28,7 +37,8 @@ export class Order {
         private _id: number,
         private _orderNumber: string,
         private _orderDate: Date,
-        private _orderStatus: string
+        private _orderStatus: string,
+        private _orderItems: OrderItem[]
     ){}   
 }
 

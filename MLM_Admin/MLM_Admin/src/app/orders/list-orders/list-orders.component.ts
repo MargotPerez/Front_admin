@@ -14,11 +14,11 @@ export class ListOrdersComponent implements OnInit{
 
   constructor(private orderService : OrderService){}
 
-  /*deleteOrder(id : number){
+  deleteOrder(id : number){
     if(confirm("Êtes-vous sûre de vouloir supprimer cette commande ?"))
       this.orderService.deleteOrder(id);
   }
-*/
+
 
   ngOnInit(): void {
     this.orderService.getOrders();

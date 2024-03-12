@@ -1,6 +1,6 @@
 <h2>Liste des commandes :</h2>
 <br/>
-<!-- <button class="btn btn-success" routerLink="/orders/add">Ajouter une catégorie</button> -->
+<button class="btn btn-success" routerLink="/orders/add">Ajouter une commande</button>
 <br/>
 <table class="table table-striped">
     <thead>
@@ -9,8 +9,10 @@
             <th>N° de commande</th>
             <th>Date de commande</th>
             <th>Statut de la commande</th>
-         <!--   <th>Editer</th> -->
-          <!--  <th>Supprimer</th> -->
+            <th>Détails </th>
+            <th>Editer</th>
+            <th>Supprimer</th>
+          
         </tr>
     </thead>
     <tbody>
@@ -19,8 +21,11 @@
             <td>{{o.orderNumber}}</td>
             <td>{{o.orderDate}}</td>
             <td>{{o.orderStatus}}</td>
-            <!--<td><button class="btn btn-primary" [routerLink]="['/categories', 'edit', c.id]">Editer</button></td>-->
-            <!--<td><button class="btn btn-danger" (click)="deleteCategory(c.id)">Supprimer</button></td>-->
+            <td><button class="btn btn-info" [routerLink]="['/orders', o.id, 'details' ]" >Afficher les détails</button></td> <!-- METTRE LIEN VERS LES ORDERITEMS -->
+           <!-- <td><button class="btn btn-info" [routerLink]="['/orders', o.id, '/list-order-items' ]" >Afficher les détails</button></td> --> <!-- METTRE LIEN VERS LES ORDERITEMS -->
+            <td><button class="btn btn-primary" [routerLink]="['/orders', 'edit', o.id]">Editer</button></td>
+            <td><button class="btn btn-danger" (click)="deleteOrder(o.id)">Supprimer</button></td>
+            
         </tr>
     </tbody>
 </table>

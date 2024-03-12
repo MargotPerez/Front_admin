@@ -1,1 +1,26 @@
-<p>add-order works!</p>
+<h2>Ajouter une nouvelle commande</h2>
+<form (ngSubmit)="addOrder(f)" #f="ngForm">
+    <div class="mb-3">
+        <label for="orderNumber" class="form-label">N° de commande *</label>
+        <input type="text" class="form-control" id="orderNumber" name="orderNumber" ngModel required #orderNumber="ngModel" >
+        <span class="erreur" *ngIf="orderNumber.invalid && orderNumber.touched">Le champ N° de commande est obligatoire</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="orderDate" class="form-label">Date de commande *</label>
+        <input type="date" class="form-control" id="orderDate" name="orderDate" ngModel required #orderDate="ngModel" >
+        <span class="erreur" *ngIf="orderDate.invalid && orderDate.touched">Le champ Date de commande est obligatoire</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="orderStatus" class="form-label">Statut de commande *</label>
+        <select id="orderStatus" name="orderStatus" ngModel required #orderStatus="ngModel" class="form-control">
+            <option value="">--Veuillez sélectionner un statut--</option>
+            <option *ngFor="let s of status" [value]="s">{{s}}</option>
+        </select>
+        <span class="erreur" *ngIf="orderNumber.invalid && orderNumber.touched">Le champ Statut de commande est obligatoire</span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Valider</button>
+    <div>* : Champ obligatoire</div>
+</form>

@@ -6,13 +6,15 @@ import { AddOrderComponent } from './add-order/add-order.component';
 import { EditOrderComponent } from './edit-order/edit-order.component';
 import { ListOrdersComponent } from './list-orders/list-orders.component';
 import { FormsModule } from '@angular/forms';
+import { DetailsOrderComponent } from './details-order/details-order.component';
 
 
 @NgModule({
   declarations: [
     AddOrderComponent,
     EditOrderComponent,
-    ListOrdersComponent
+    ListOrdersComponent,
+    DetailsOrderComponent
   ],
   imports: [
     CommonModule,
