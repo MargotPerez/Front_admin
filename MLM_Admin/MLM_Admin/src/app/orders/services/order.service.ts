@@ -16,12 +16,23 @@ export class OrderService {
   ordersUpdated = new Subject<Order[]>();
  // orderItemsUpdated = new Subject<OrderItem[]>();
 
+
+ options = {
+  headers: new HttpHeaders(
+    { 
+      'content-type': 'application/json',
+      'authorization' : 'Bearer ' + localStorage.getItem('token') || ''
+    }
+  )
+};
+
+
   baseUrl = "https://localhost:7200/api/Orders";
 
   constructor(private http : HttpClient) { }
 
   getOrders(){
-    this.http.get<Order[]>(this.baseUrl).subscribe(
+    this.http.get<Order[]>(this.baseUrl, this.options).subscribe(
       orders => {
         this.orders = orders;
         this.ordersUpdated.next([...this.orders]);
@@ -50,7 +61,7 @@ export class OrderService {
 */
   editOrder(order : Order) {
     const id = order.id
-    this.http.put<Order>(this.baseUrl+"/"+id, order).subscribe(
+    this.http.put<Order>(this.baseUrl+"/"+id, order, this.options).subscribe(
       order => {
       this.orders = this.orders.map(
         o=>o.id === order.id?order:o
@@ -61,7 +72,7 @@ export class OrderService {
   }
 
   deleteOrder(id : number){
-    this.http.delete<Order>(this.baseUrl +"/"+id).subscribe(
+    this.http.delete<Order>(this.baseUrl +"/"+id, this.options).subscribe(
     order => {
     this.orders = this.orders.filter(c=>c.id !== id);
     this.ordersUpdated.next([...this.orders]);
@@ -74,7 +85,9 @@ export class OrderService {
   addOrder(orderNumber : string, orderDate : Date, orderStatus : string){
     const options = {
       headers: new HttpHeaders(
-        { 'content-type': 'application/json'}
+        { 'content-type': 'application/json',
+        'authorization' : 'Bearer ' + localStorage.getItem('token') || ''
+      }
       )
     };
     this.http.post<Order>(

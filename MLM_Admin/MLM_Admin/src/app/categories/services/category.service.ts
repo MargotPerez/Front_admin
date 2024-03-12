@@ -14,8 +14,17 @@ export class CategoryService {
 
   constructor(private http : HttpClient) { }
 
+  options = {
+    headers: new HttpHeaders(
+      { 
+        'content-type': 'application/json',
+        'authorization' : 'Bearer ' + localStorage.getItem('token') || ''
+      }
+    )
+  };
+
   getCategories(){
-    this.http.get<Category[]>(this.baseUrl).subscribe(
+    this.http.get<Category[]>(this.baseUrl, this.options).subscribe(
       categories => {
         this.categories = categories;
         console.log("test");
@@ -25,7 +34,7 @@ export class CategoryService {
   }
 
   deleteCategory(id : number){
-    this.http.delete<Category>(this.baseUrl +"/"+id).subscribe(
+    this.http.delete<Category>(this.baseUrl +"/"+id, this.options).subscribe(
     category => {
     this.categories = this.categories.filter(c=>c.id !== id);
     this.categoriesUpdated.next([...this.categories]);
@@ -42,7 +51,7 @@ export class CategoryService {
 
   editCategory(category : Category) {
     const id = category.id
-    this.http.put<Category>(this.baseUrl+"/"+id, category).subscribe(
+    this.http.put<Category>(this.baseUrl+"/"+id, category, this.options).subscribe(
       category => {
       this.categories = this.categories.map(
         c=>c.id === category.id?category:c
@@ -62,7 +71,8 @@ export class CategoryService {
   addCategory(name : string){
     const options = {
       headers: new HttpHeaders(
-        { 'content-type': 'application/json'}
+        { 'content-type': 'application/json',
+        'authorization' : 'Bearer ' + localStorage.getItem('token') || ''}
       )
     };
     this.http.post<Category>(

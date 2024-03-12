@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
 
-  baseUrl = "https://localhost:7200/api/authentification/login";
+  baseUrl = "https://localhost:7200/api/authentication/login";
   options = {
     headers : new HttpHeaders(
     {

@@ -14,8 +14,17 @@ export class ProductService {
 
   constructor(private http : HttpClient) { }
 
+  options = {
+    headers: new HttpHeaders(
+      { 
+        'content-type': 'application/json',
+        'authorization' : 'Bearer ' + localStorage.getItem('token') || ''
+      }
+    )
+  };
+  
   getProducts(){
-    this.http.get<Product[]>(this.baseUrl).subscribe(
+    this.http.get<Product[]>(this.baseUrl, this.options ).subscribe(
       products => {
         this.products = products;
         console.log(this.products);
@@ -28,10 +37,10 @@ export class ProductService {
     return this.products.find(p=>p.id === id)
   }
 
-  
+
   editProduct(product : Product) {
     const id = product.id
-    this.http.put<Product>(this.baseUrl+"/"+id, product).subscribe(
+    this.http.put<Product>(this.baseUrl+"/"+id, product, this.options).subscribe(
       product => {
       this.products = this.products.map(
         p=>p.id === product.id?product:p
@@ -45,7 +54,9 @@ export class ProductService {
   addProduct(productNumber: string, productName: string, quantityInStock: number, unitPrice: number, categoryId: number, image: string, color: string, size: string, description: string){
     const options = {
       headers: new HttpHeaders(
-        { 'content-type': 'application/json'}
+        { 'content-type': 'application/json',
+        'authorization' : 'Bearer ' + localStorage.getItem('token') || ''
+      }
       )
     };
     this.http.post<Product>(
@@ -72,7 +83,7 @@ export class ProductService {
   }
 
   deleteProduct(id : number){
-    this.http.delete<Product>(this.baseUrl +"/"+id).subscribe(
+    this.http.delete<Product>(this.baseUrl +"/"+id, this.options).subscribe(
     product => {
     this.products = this.products.filter(p=>p.id !== id);
     this.productsUpdated.next([...this.products]);
