@@ -48,7 +48,7 @@ export class OrderService {
 
   getOrdersPagination(pageNumber : number, pageSize : number)
   {
-    this.http.get<Order[]>(this.baseUrl+"/"+pageNumber +"/"+pageSize).subscribe(
+    this.http.get<Order[]>(this.baseUrl+"/"+pageNumber +"/"+pageSize, this.options).subscribe(
       orders => {
         this.orders = orders;
         this.ordersUpdated.next([...this.orders]);

@@ -7,10 +7,9 @@
             <th>Id Produit</th>
             <th>Quantité</th>
             <th>Prix unitaire</th>
-            <th>Montant total</th>
-            <!-- <th>Editer</th> -->
-         <!--   <th>Supprimer</th> -->
-          
+            <th>Prix total</th>
+           
+            
         </tr>
     </thead>
     <tbody>
@@ -23,4 +22,11 @@
             
         </tr>
     </tbody>
+    <tfoot>
+        <br/>
+        <tr>
+            <td colspan="3" class="text-end"><b class="term">Montant total de la commande :</b></td>
+            <td>{{ totalPrice }}</td>
+        </tr>
+    </tfoot>
 </table>

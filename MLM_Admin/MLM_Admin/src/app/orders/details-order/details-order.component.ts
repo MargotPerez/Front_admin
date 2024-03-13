@@ -17,21 +17,20 @@ export class DetailsOrderComponent implements OnInit {
 
   ordersSubscription? : Subscription
 
+  totalPrice? : number = 0;
+
   constructor(private orderService : OrderService, private route:ActivatedRoute){}
 
   
   ngOnInit(): void {
     this.route.params.subscribe(params => {
     const id = params['id']
-    console.log(id)
+  
     this.order = this.orderService.getOrderById(+id)
-    console.log(this.order)
-   /* this.orderService.orderItemsUpdated.subscribe(items=>
-      this.orderItems = items
-
-    )
-    this.orderService.getOrderItems(this.order!)
-    */
+    if (this.order) {
+      this.orderItems = this.order.orderItems;
+      this.totalPrice = this.orderItems.reduce((total: number, orderitem: OrderItem) => total + (orderitem.quantity * orderitem.price), 0);
+    }
   });
   
   }

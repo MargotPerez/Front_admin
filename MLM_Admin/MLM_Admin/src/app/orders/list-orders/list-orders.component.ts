@@ -14,7 +14,8 @@ export class ListOrdersComponent implements OnInit{
   filteredOrders? : Order[];
 
   currentPage: number = 1;
-  itemsPerPage: number = 2; // Nombre d'éléments par page
+  itemsPerPage: number = 15; // Nombre d'éléments par page
+ 
 
   /********************************* */
   getCurrentPage() {
@@ -60,7 +61,8 @@ export class ListOrdersComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.orderService.getOrders();
+    this.orderService.getOrdersPagination(this.currentPage, this.itemsPerPage);
+    //this.orderService.getOrders();
 
     this.ordersSubscription = this.orderService.ordersUpdated.subscribe(
       orders => {

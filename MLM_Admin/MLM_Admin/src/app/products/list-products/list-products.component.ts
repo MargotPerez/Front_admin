@@ -19,11 +19,14 @@ export class ListProductsComponent implements OnInit {
 
   currentPage: number = 1;
   itemsPerPage: number = 15; // Nombre d'éléments par page
+  
+
 
   /********************************* */
   getCurrentPage() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
+    
     return this.products.slice(startIndex, endIndex);
   }
    // Méthode pour aller à la page suivante
@@ -47,7 +50,7 @@ export class ListProductsComponent implements OnInit {
   }
   /********************************* */
 
-  
+
   constructor(private productService : ProductService, private categoryService : CategoryService){}
 
   transformProductToDisplay() : IProductToDisplay[]{
@@ -79,7 +82,7 @@ export class ListProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.getProducts();
+    this.productService.getProductsPagination(this.currentPage, this.itemsPerPage);
 
     this.productsSubscription = this.productService.productsUpdated.subscribe(
       products => {
@@ -87,6 +90,8 @@ export class ListProductsComponent implements OnInit {
        
         this.productsToDisplay = this.transformProductToDisplay();
         console.log(this.productsToDisplay);
+
+      
       }
     );
   }

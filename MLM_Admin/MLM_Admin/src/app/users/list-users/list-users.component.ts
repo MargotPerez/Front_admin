@@ -14,7 +14,8 @@ export class ListUsersComponent implements OnInit {
   filteredUsers? : User[];
 
   currentPage: number = 1;
-  itemsPerPage: number = 2; // Nombre d'éléments par page
+  itemsPerPage: number = 15; // Nombre d'éléments par page
+  
 
   /********************************* */
   getCurrentPage() {
@@ -57,7 +58,7 @@ export class ListUsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getUsers();
+    this.userService.getUsersPagination(this.currentPage, this.itemsPerPage);
 
     this.usersSubscription = this.userService.usersUpdated.subscribe(
       users => {
