@@ -33,6 +33,18 @@ export class ProductService {
     );
   }
 
+
+  getProductsPagination(pageNumber : number, pageSize : number)
+  {
+    this.http.get<Product[]>(this.baseUrl+"/"+pageNumber +"/"+pageSize).subscribe(
+      products => {
+        this.products = products;
+        console.log(this.products);
+        this.productsUpdated.next([...this.products]);
+      }
+    );
+  }
+
   getProductById(id : number) : Product | undefined {
     return this.products.find(p=>p.id === id)
   }

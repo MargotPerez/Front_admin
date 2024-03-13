@@ -13,6 +13,38 @@ export class ListOrdersComponent implements OnInit{
   ordersSubscription? : Subscription
   filteredOrders? : Order[];
 
+  currentPage: number = 1;
+  itemsPerPage: number = 2; // Nombre d'éléments par page
+
+  /********************************* */
+  getCurrentPage() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.orders.slice(startIndex, endIndex);
+  }
+   // Méthode pour aller à la page suivante
+   nextPage() {
+    this.currentPage++;
+    console.log("nextPage")
+
+  }
+
+   // Méthode pour aller à la page précédente
+   previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+    console.log("previousPage")
+  }
+  onPageChange(pageNumber: number) {
+    console.log("ca marche")
+    this.currentPage = pageNumber;
+    this.orderService.getOrdersPagination(this.currentPage,this.itemsPerPage);
+  }
+  /********************************* */
+
+
+
   constructor(private orderService : OrderService){}
 
   deleteOrder(id : number){

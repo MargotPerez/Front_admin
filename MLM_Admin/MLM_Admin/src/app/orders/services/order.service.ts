@@ -46,19 +46,16 @@ export class OrderService {
     
   }
 
-
- /* getOrderItems(order : Order){
-    const id = order.id
-    this.http.get<Order>(this.baseUrl+"/"+id).subscribe(
-      order => {
-        this.orderItems = order.orderItems;
-        this.orderItemsUpdated.next([...this.orderItems]);
+  getOrdersPagination(pageNumber : number, pageSize : number)
+  {
+    this.http.get<Order[]>(this.baseUrl+"/"+pageNumber +"/"+pageSize).subscribe(
+      orders => {
+        this.orders = orders;
+        this.ordersUpdated.next([...this.orders]);
       }
     );
-    console.log(this.orderItemsUpdated)
-    return this.orderItemsUpdated
   }
-*/
+ 
   editOrder(order : Order) {
     const id = order.id
     this.http.put<Order>(this.baseUrl+"/"+id, order, this.options).subscribe(

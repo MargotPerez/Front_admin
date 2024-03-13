@@ -13,6 +13,36 @@ export class ListUsersComponent implements OnInit {
   usersSubscription? : Subscription
   filteredUsers? : User[];
 
+  currentPage: number = 1;
+  itemsPerPage: number = 2; // Nombre d'éléments par page
+
+  /********************************* */
+  getCurrentPage() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.users.slice(startIndex, endIndex);
+  }
+   // Méthode pour aller à la page suivante
+   nextPage() {
+    this.currentPage++;
+    console.log("nextPage")
+
+  }
+
+   // Méthode pour aller à la page précédente
+   previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+    console.log("previousPage")
+  }
+  onPageChange(pageNumber: number) {
+    console.log("ca marche")
+    this.currentPage = pageNumber;
+    this.userService.getUsersPagination(this.currentPage,this.itemsPerPage);
+  }
+  /********************************* */
+
   constructor(private userService : UserService){}
 
   deleteUser(id : number){

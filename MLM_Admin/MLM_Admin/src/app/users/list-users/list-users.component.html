@@ -5,6 +5,29 @@
 </div>
 
 
+<div class="ml-auto mt-3 mr-2">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item" [ngClass]="{ 'disabled': currentPage === 1 }">
+                <a class="page-link" (click)="onPageChange(currentPage - 1)"  aria-label="Previous">
+                    <span  aria-hidden="true" class="font-weight-bold" >&lt;</span>
+                </a>
+            </li>
+            <li class="page-item active">
+                <a class="page-link">{{currentPage}}</a>
+            </li>
+        
+            <li class="page-item" >
+                <a class="page-link"  (click)="onPageChange(currentPage + 1)" aria-label="Next">
+                    <span aria-hidden="true" class="font-weight-bold">&gt;</span> 
+                </a>
+            </li>
+        </ul>
+       
+    </nav>
+</div>
+
+
 <table class="table table-striped">
     <thead>
         <tr>

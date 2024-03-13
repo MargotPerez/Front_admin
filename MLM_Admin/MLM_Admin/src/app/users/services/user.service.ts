@@ -38,6 +38,17 @@ export class UserService {
     return this.users.find(u=>u.id === id)
   }
 
+  getUsersPagination(pageNumber : number, pageSize : number)
+  {
+    this.http.get<User[]>(this.baseUrl+"/"+pageNumber +"/"+pageSize).subscribe(
+      users => {
+        this.users = users;
+        this.usersUpdated.next([...this.users]);
+      }
+    );
+  }
+
+
   editUser(user : User) {
     const id = user.id
     this.http.put<User>(this.baseUrl+"/"+id, user, this.options).subscribe(
