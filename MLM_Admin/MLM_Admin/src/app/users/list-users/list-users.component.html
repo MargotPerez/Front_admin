@@ -1,10 +1,14 @@
 <h2>Liste des utilisateurs :</h2>
 
+<div class="bg-white rounded d-flex align-items-center justify-content-between" id="header">
+    <app-search-user (searchUserEvent)="filterUsers($event)"></app-search-user>
+</div>
+
 
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Id</th>
+      
             <th>Prénom</th>
             <th>Nom</th>
             <th>EMail</th>
@@ -18,8 +22,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let u of users">
-            <td>{{u.id}}</td>
+        <tr *ngFor="let u of filteredUsers ? filteredUsers : users">
+     
             <td>{{u.firstName}}</td>
             <td>{{u.lastName}}</td>
             <td>{{u.mail}}</td>

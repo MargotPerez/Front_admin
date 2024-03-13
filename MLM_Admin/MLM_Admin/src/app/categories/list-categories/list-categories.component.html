@@ -5,7 +5,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Id</th>
+ 
             <th>Nom</th>
             <th>Editer</th>
             <th>Supprimer</th>
@@ -13,7 +13,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let c of categories">
-            <td>{{c.id}}</td>
+
             <td>{{c.name}}</td>
             <td><button class="btn btn-primary" [routerLink]="['/categories', 'edit', c.id]">Editer</button></td>
             <td><button class="btn btn-danger" (click)="deleteCategory(c.id)">Supprimer</button></td>

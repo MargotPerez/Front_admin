@@ -1,13 +1,18 @@
 <h2>Liste des commandes :</h2>
 <br/>
-<button class="btn btn-success" routerLink="/orders/add">Ajouter une commande</button>
+<div class="bg-white rounded d-flex align-items-center justify-content-between" id="header">
+    <app-search-order (searchOrderEvent)="filterOrders($event)"></app-search-order>
+    <button class="btn btn-success" routerLink="/products/add">Ajouter une commande</button>
+</div>
+
 <br/>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Id</th>
+       
             <th>N° de commande</th>
             <th>Date de commande</th>
+           <!-- <th>Montant total</th> -->
             <th>Statut de la commande</th>
             <th>Détails </th>
             <th>Editer</th>
@@ -16,12 +21,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let o of orders">
-            <td>{{o.id}}</td>
+        <tr *ngFor="let o of filteredOrders ? filteredOrders : orders">
+   
             <td>{{o.orderNumber}}</td>
             <td>{{o.orderDate}}</td>
+            
             <td>{{o.orderStatus}}</td>
-            <td><button class="btn btn-info" [routerLink]="['/orders', o.id, 'details' ]" >Afficher les détails</button></td> <!-- METTRE LIEN VERS LES ORDERITEMS -->
+            <td><button class="btn btn-info" [routerLink]="['/orders', o.id, 'details' ]" >Afficher les détails</button></td>
            <!-- <td><button class="btn btn-info" [routerLink]="['/orders', o.id, '/list-order-items' ]" >Afficher les détails</button></td> --> <!-- METTRE LIEN VERS LES ORDERITEMS -->
             <td><button class="btn btn-primary" [routerLink]="['/orders', 'edit', o.id]">Editer</button></td>
             <td><button class="btn btn-danger" (click)="deleteOrder(o.id)">Supprimer</button></td>

@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class ListUsersComponent implements OnInit {
   users : User[] = [];
   usersSubscription? : Subscription
+  filteredUsers? : User[];
 
   constructor(private userService : UserService){}
 
@@ -19,6 +20,12 @@ export class ListUsersComponent implements OnInit {
       this.userService.deleteUser(id);
   }
   
+  filterUsers(keyword : string){
+    this.filteredUsers = this.users!.filter(
+      u=>u.firstName.toLowerCase().includes(keyword.toLowerCase()) || u.lastName.toLowerCase().includes(keyword.toLowerCase()) || u.mail.toLowerCase().includes(keyword.toLowerCase())
+    );
+  }
+
   ngOnInit(): void {
     this.userService.getUsers();
 

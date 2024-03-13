@@ -7,6 +7,7 @@ import { EditOrderComponent } from './edit-order/edit-order.component';
 import { ListOrdersComponent } from './list-orders/list-orders.component';
 import { FormsModule } from '@angular/forms';
 import { DetailsOrderComponent } from './details-order/details-order.component';
+import { SearchOrderComponent } from './search-order/search-order.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { DetailsOrderComponent } from './details-order/details-order.component';
     AddOrderComponent,
     EditOrderComponent,
     ListOrdersComponent,
-    DetailsOrderComponent
+    DetailsOrderComponent,
+    SearchOrderComponent
   ],
   imports: [
     CommonModule,

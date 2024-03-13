@@ -14,6 +14,7 @@ export class ListProductsComponent implements OnInit {
   
   products : Product[] = [];
   productsToDisplay : IProductToDisplay[] = [];
+  filteredProducts? : IProductToDisplay[];
   productsSubscription? : Subscription
 
   constructor(private productService : ProductService, private categoryService : CategoryService){}
@@ -40,6 +41,12 @@ export class ListProductsComponent implements OnInit {
       this.productService.deleteProduct(id);
   }
   
+  filterProducts(keyword : string){
+    this.filteredProducts = this.productsToDisplay!.filter(
+      p=>p.productNumber.toLowerCase().includes(keyword.toLowerCase()) || p.productName.toLowerCase().includes(keyword.toLowerCase())
+    );
+  }
+
   ngOnInit(): void {
     this.productService.getProducts();
 

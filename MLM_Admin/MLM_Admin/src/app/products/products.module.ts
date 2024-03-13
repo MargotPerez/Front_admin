@@ -6,6 +6,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { ListProductsComponent } from './list-products/list-products.component';
 import { FormsModule } from '@angular/forms';
+import { SearchProductComponent } from './search-product/search-product.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     AddProductComponent,
     EditProductComponent,
     ListProductsComponent,
+    SearchProductComponent,
   ],
   imports: [
     CommonModule,

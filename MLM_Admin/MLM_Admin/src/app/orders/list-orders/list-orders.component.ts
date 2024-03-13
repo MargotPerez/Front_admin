@@ -11,12 +11,19 @@ import { OrderService } from '../services/order.service';
 export class ListOrdersComponent implements OnInit{
   orders : Order[] = [];
   ordersSubscription? : Subscription
+  filteredOrders? : Order[];
 
   constructor(private orderService : OrderService){}
 
   deleteOrder(id : number){
     if(confirm("Êtes-vous sûre de vouloir supprimer cette commande ?"))
       this.orderService.deleteOrder(id);
+  }
+
+  filterOrders(keyword : string){
+    this.filteredOrders = this.orders!.filter(
+      o=>o.orderNumber.toLowerCase().includes(keyword.toLowerCase())
+    );
   }
 
 

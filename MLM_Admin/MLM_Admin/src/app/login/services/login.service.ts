@@ -24,7 +24,7 @@ export class LoginService {
       password : password
     })
 
-    //console.log(body);
+ 
     this.http.post(this.baseUrl, body, this.options).subscribe(
       {
         next : (response : any) => {
@@ -38,7 +38,13 @@ export class LoginService {
           //une fois que l'utilisateur est connecté, je le redirige vers le tableau de bord
           this.router.navigate(["/"]);
         },
-        error : error => console.log(error),
+        error : error => {
+          if(error.status == 401)
+            {
+            alert("Identifiant ou mot de passe invalide")
+            this.router.navigate(["/login"]);}
+          console.log(error)
+        },
         complete : ()=> console.log("Complete")
       }
     )

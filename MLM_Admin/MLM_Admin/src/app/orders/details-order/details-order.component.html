@@ -4,10 +4,10 @@
     <thead>
         <tr>
 
-            <th>Id</th>
-            <th>Produit</th>
+            <th>Id Produit</th>
             <th>Quantité</th>
-            <th>Prix</th>
+            <th>Prix unitaire</th>
+            <th>Montant total</th>
             <!-- <th>Editer</th> -->
          <!--   <th>Supprimer</th> -->
           
@@ -15,10 +15,11 @@
     </thead>
     <tbody>
         <tr *ngFor="let oi of order!.orderItems">
-            <td>{{oi.id}}</td>
+      
             <td>{{oi.productId}}</td>
             <td>{{oi.quantity}}</td>
             <td>{{oi.price}}</td>
+            <td>{{oi.quantity * oi.price}}</td>
             
         </tr>
     </tbody>
