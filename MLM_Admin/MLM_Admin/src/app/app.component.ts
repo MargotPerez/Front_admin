@@ -8,5 +8,10 @@ import { LoginService } from './login/services/login.service';
 })
 export class AppComponent {
   title = 'MLM_Admin';
+
+  constructor(private loginService : LoginService){}
   
+  logout(){
+    this.loginService.logout();
+  }
 }
