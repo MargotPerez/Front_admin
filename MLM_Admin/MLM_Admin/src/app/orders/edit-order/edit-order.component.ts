@@ -22,6 +22,7 @@ export class EditOrderComponent implements OnInit {
   editOrder(f : NgForm){
     this.order!.orderNumber = f.value.orderNumber;
     this.order!.orderDate = f.value.orderDate;
+    this.order!.userId = f.value.userId;
     this.order!.orderStatus = f.value.orderStatus;
     this.orderService.editOrder(this.order!);
     this.router.navigate(['/orders']);

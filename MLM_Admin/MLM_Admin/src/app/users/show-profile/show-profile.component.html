@@ -1,0 +1,151 @@
+<div class="container mt-5">
+    <div class="row flex-lg-nowrap">
+      <div class="col">
+        <div class="row">
+          <div class="col mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="e-profile">
+                  <div class="row">
+                    <div class="col-12 col-sm-auto mb-3">
+                      <div class="mx-auto" style="width: 140px;">
+                        <div class="d-flex justify-content-center align-items-center rounded">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png" alt="photo de profil" style="height: 150px;" >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                      <div class="text-center text-sm-left mb-2 mb-sm-0">
+                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user.firstName}} {{user.lastName}}</h4>
+                        <p class="mb-0">{{user.firstName}}{{user.lastName}}</p>
+                        <div class="text-muted"><small>Last seen 2 hours ago</small></div>
+                      </div>
+                      <div class="text-center text-sm-right">
+                        <span class="badge badge-secondary">administrator</span>
+                        <div class="text-muted"><small>Joined 09 Dec 2017</small></div>
+                      </div>
+                    </div>
+                  </div>
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="active nav-link">Informations</a></li>
+                  </ul>
+                  <div class="tab-content pt-3">
+                    <div class="tab-pane active">
+                     <form class="form"  #f ="ngForm" (ngSubmit)="editUser(f)">  
+                        <div class="row">
+                          <div class="col">
+                            <div class="row mt-3">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="firstName">Prénom</label>
+                                  <input class="form-control" type="text" id="firstName" name="firstName" value="{{user.firstName}}" ngModel required #name="ngModel" [(ngModel)]="user==undefined?'':user.firstName">
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="lastName">Nom de famille</label>
+                                  <input class="form-control" type="text" id="lastName" name="lastName" value="{{user.lastName}}" ngModel required #name="ngModel" [(ngModel)]="user==undefined?'':user.lastName">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row mt-3">
+                              <div class="col">
+                                <div class="form-group">
+                                    <label for="dateOfBirth">Date de naissance</label>
+                                    <input class="form-control" type="date" id="dateOfBirth" name="dateOfBirth" value="{{user.dateOfBirth}}" ngModel required #name="ngModel" [(ngModel)]="user==undefined?'':user.dateOfBirth">
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label for="phoneNumber">Numéro de téléphone</label>
+                                    <input class="form-control" type="string" id="phoneNumber" name="phoneNumber" value="{{user.phoneNumber}}" ngModel required #name="ngModel" [(ngModel)]="user==undefined?'':user.phoneNumber">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col">
+                                  <div class="form-group">
+                                      <label for="mail">Adresse mail</label>
+                                      <input class="form-control" type="email" id="mail" name="mail" value="{{user.mail}}" ngModel required #name="ngModel" [(ngModel)]="user==undefined?'':user.mail">
+                                    </div>
+                                  </div>
+                              </div>
+                            
+                          </div>
+                      
+                        <div class="row mt-3">
+                          <div class="col-12 col-sm-6 mb-3">
+                            <div class="mb-2"><b>Changer votre mot de passe</b></div>
+    
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="password">Nouveau mot de passe</label>
+                                  <input class="form-control" type="password" placeholder="••••••">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="password">Confirmer votre mot de passe</label>
+                                  <input class="form-control" type="password" id="password" name="password" placeholder="••••••" ngModel required #name="ngModel" [(ngModel)]="user==undefined?'':user.password"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-sm-5 offset-sm-1 mb-3">
+                            <div class="mb-2"><b>Adresses</b></div>
+                            <div class="row">
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label for="deliveryAddress">Adresse de livraison</label>
+                                    <input class="form-control" type="text" id="deliveryAddress" name="deliveryAddress" value="{{user.deliveryAddress}}" ngModel required #name="ngModel" [(ngModel)]="user==undefined?'':user.deliveryAddress">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="invoiceAdress">Adresse de facturation</label>
+                                    <input class="form-control" type="text" id="invoiceAdress" name="invoiceAdress" value="{{user.invoiceAdress}}" ngModel required #name="ngModel" [(ngModel)]="user==undefined?'':user.invoiceAdress">
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col d-flex justify-content-end">
+                            <button class="btn btn-primary" type="submit">Enregistrer les changements</button>
+                          </div>
+                        </div>
+                      </form>
+    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-12 col-md-3 mb-3">
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="px-xl-3">
+                  <button class="btn btn-block btn-secondary" (click)="logout()">
+                    <i class="fa fa-sign-out"></i>
+                    <span>Déconnexion</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title font-weight-bold">Support</h6>
+                <p class="card-text">Obtenez une aide rapide grâce à notre service client.</p>
+                <button type="button" class="btn btn-primary">Contactez nous</button>
+              </div>
+            </div>
+          </div>
+        </div>   
+            
+        
+        
+        <!-- <button class="btn btn-primary" [routerLink]="['/users', 'edit', u.id]">Editer</button> -->

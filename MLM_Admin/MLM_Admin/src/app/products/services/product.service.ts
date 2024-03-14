@@ -33,7 +33,6 @@ export class ProductService {
     );
   }
 
-
   getProductsPagination(pageNumber : number, pageSize : number)
   {
     this.http.get<Product[]>(this.baseUrl+"/"+pageNumber +"/"+pageSize).subscribe(

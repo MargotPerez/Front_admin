@@ -6,13 +6,15 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { FormsModule } from '@angular/forms';
 import { SearchUserComponent } from './search-user/search-user.component';
+import { ShowProfileComponent } from './show-profile/show-profile.component';
 
 
 @NgModule({
   declarations: [
     EditUserComponent,
     ListUsersComponent,
-    SearchUserComponent
+    SearchUserComponent,
+    ShowProfileComponent
   ],
   imports: [
     CommonModule,

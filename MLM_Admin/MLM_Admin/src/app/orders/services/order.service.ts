@@ -79,7 +79,7 @@ export class OrderService {
 
 
   
-  addOrder(orderNumber : string, orderDate : Date, orderStatus : string){
+  addOrder(orderNumber : string, orderDate : Date, orderStatus : string, userId : number){
     const options = {
       headers: new HttpHeaders(
         { 'content-type': 'application/json',
@@ -93,6 +93,7 @@ export class OrderService {
         OrderNumber : orderNumber,
         OrderDate : orderDate,
         OrderStatus : orderStatus,
+        UserId : userId
       }),
       options
       )

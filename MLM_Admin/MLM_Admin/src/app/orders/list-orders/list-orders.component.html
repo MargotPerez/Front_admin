@@ -2,7 +2,7 @@
 <br/>
 <div class="bg-white rounded d-flex align-items-center justify-content-between" id="header">
     <app-search-order (searchOrderEvent)="filterOrders($event)"></app-search-order>
-    <button class="btn btn-success" routerLink="/products/add">Ajouter une commande</button>
+    <!-- <button class="btn btn-success" routerLink="/orders/add">Ajouter une commande</button> -->
 </div>
 
 <br/>
@@ -20,7 +20,7 @@
                 <a class="page-link">{{currentPage}}</a>
             </li>
         
-            <li class="page-item" [ngClass]="{ 'disabled': currentPage>=(orders.length)/itemsPerPage + itemsPerPage}">
+            <li class="page-item" [ngClass]="{ 'disabled': orders.length<itemsPerPage}">
                 <a class="page-link"  (click)="onPageChange(currentPage + 1)" aria-label="Next">
                     <span aria-hidden="true" class="font-weight-bold">&gt;</span> 
                 </a>
@@ -37,7 +37,7 @@
        
             <th>N° de commande</th>
             <th>Date de commande</th>
-           <!-- <th>Montant total</th> -->
+            <th>UserId</th>
             <th>Statut de la commande</th>
             <th>Détails </th>
             <th>Editer</th>
@@ -50,7 +50,7 @@
    
             <td>{{o.orderNumber}}</td>
             <td>{{o.orderDate}}</td>
-            
+            <td>{{o.userId}}</td>
             <td>{{o.orderStatus}}</td>
             <td><button class="btn btn-info" [routerLink]="['/orders', o.id, 'details' ]" >Afficher les détails</button></td>
            <!-- <td><button class="btn btn-info" [routerLink]="['/orders', o.id, '/list-order-items' ]" >Afficher les détails</button></td> --> <!-- METTRE LIEN VERS LES ORDERITEMS -->

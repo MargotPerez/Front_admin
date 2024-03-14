@@ -13,6 +13,12 @@
     </div>
 
     <div class="mb-3">
+        <label for="userId" class="form-label">Client Id *</label>
+        <input type="number" class="form-control" id="userId" name="userId" required #userId="ngModel" [(ngModel)]="order==undefined?'':order.userId" >
+        <span class="erreur" *ngIf="orderDate.invalid && orderDate.touched">Le champ Client Id est obligatoire</span>
+    </div>
+
+    <div class="mb-3">
         <label for="orderStatus" class="form-label">Statut de commande *</label>
         <!-- <input type="text" class="form-control" id="orderStatus" name="orderStatus" ngModel required #orderStatus="ngModel" [(ngModel)]="order==undefined?'':order.orderStatus" > -->
         <select id="orderStatus" name="orderStatus" ngModel required #orderStatus="ngModel" class="form-control" [(ngModel)]="order!.orderStatus">

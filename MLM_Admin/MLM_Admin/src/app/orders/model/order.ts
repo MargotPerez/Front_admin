@@ -1,6 +1,12 @@
 import { OrderItem } from "src/app/orders/model/order-item";
 
 export class Order {
+    public get userId(): number {
+        return this._userId;
+    }
+    public set userId(value: number) {
+        this._userId = value;
+    }
     public get orderItems(): OrderItem[] {
         return this._orderItems;
     }
@@ -38,7 +44,8 @@ export class Order {
         private _orderNumber: string,
         private _orderDate: Date,
         private _orderStatus: string,
-        private _orderItems: OrderItem[]
+        private _orderItems: OrderItem[],
+        private _userId: number
     ){}   
 }
 

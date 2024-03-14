@@ -38,6 +38,10 @@ export class UserService {
     return this.users.find(u=>u.id === id)
   }
 
+  getAdminById(id : number) : Observable<User> {
+    return this.http.get<User>(this.baseUrl+"/"+id)
+  }
+
   getUsersPagination(pageNumber : number, pageSize : number)
   {
     this.http.get<User[]>(this.baseUrl+"/"+pageNumber +"/"+pageSize).subscribe(

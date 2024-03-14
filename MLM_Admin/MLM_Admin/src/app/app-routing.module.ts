@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard } from './shared/auth.guard';
+import { ShowProfileComponent } from './users/show-profile/show-profile.component';
 //import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
 
   {
     path : 'login', component : LoginComponent
+  },
+
+  {
+    path : 'profile', component : ShowProfileComponent
   },
 
   {

@@ -20,8 +20,8 @@ export class AddOrderComponent implements OnInit{
   
 
   addOrder(f : NgForm){
-    this.orderService.addOrder(f.value.orderNumber, f.value.orderDate, f.value.orderStatus);
-    this.router.navigate(['/orders']); // CHANGER POUR QUE CA AILLE VERS L'AJOUT D'ORDERITEMS
+    this.orderService.addOrder(f.value.orderNumber, f.value.orderDate, f.value.userId,f.value.orderStatus);
+    this.router.navigate(['/orders']); 
   }
 
   

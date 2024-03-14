@@ -18,9 +18,13 @@ export class ListProductsComponent implements OnInit {
   productsSubscription? : Subscription
 
   currentPage: number = 1;
-  itemsPerPage: number = 15; // Nombre d'éléments par page
+  itemsPerPage: number = 2; // Nombre d'éléments par page
   
-
+  lengthProducts : number = 0;
+  
+  //PageNumber: number = Math.ceil((this.products.length)/this.itemsPerPage);
+  
+  
 
   /********************************* */
   getCurrentPage() {
@@ -82,6 +86,18 @@ export class ListProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.productService.getProducts();
+    this.productsSubscription = this.productService.productsUpdated.subscribe(
+      products => {
+        this.lengthProducts = products.length;
+       
+        this.productsToDisplay = this.transformProductToDisplay();
+        console.log(this.productsToDisplay);
+
+      
+      }
+    );
+
     this.productService.getProductsPagination(this.currentPage, this.itemsPerPage);
 
     this.productsSubscription = this.productService.productsUpdated.subscribe(

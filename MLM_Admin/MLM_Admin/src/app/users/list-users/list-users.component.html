@@ -17,7 +17,7 @@
                 <a class="page-link">{{currentPage}}</a>
             </li>
         
-            <li class="page-item" [ngClass]="{ 'disabled': currentPage>=(users.length)/itemsPerPage + itemsPerPage}">
+            <li class="page-item" [ngClass]="{ 'disabled': users.length<itemsPerPage}">
                 <a class="page-link"  (click)="onPageChange(currentPage + 1)" aria-label="Next">
                     <span aria-hidden="true" class="font-weight-bold">&gt;</span> 
                 </a>
